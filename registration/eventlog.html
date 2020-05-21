@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>events</h1>
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">SERIAL NO.</th>
+      <th scope="col">EVENT NAME</th>
+      <th scope="col">DATE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    	<div>
+        
+		{%for i in object_list%} 
+        <th scope="row">{{i.serial_no}}</th>
+        <td><a href="/adminevents/{{i.event_name}}">{{i.event_name}}</a></td>
+        <td>{{i.event_date}}</td> 
+        
+    </tr>
+    {%endfor%}
+    </div>
+
+   
+{% endblock %}

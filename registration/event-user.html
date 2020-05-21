@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h1>events</h1>
+  <table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">SERIAL NO.</th>
+      <th scope="col">USER NAME</th>
+      <th scope="col">EMAIL</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    	<div>
+		{%for i in object_list%} 
+        <th scope="row">{{i.id}}</th>
+        <td>{{i.username}}</td>
+        <td>{{i.email}}</td> 
+    </tr>
+    {%endfor%}
+    </div>
+
+   
+{% endblock %}
