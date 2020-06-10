@@ -23,7 +23,7 @@ from django.urls import path, include
 from Events.views import about_us, EventDiscription, UserViewSet, Events, UserDetail, UserISAuthenticated, AdminEvents, AdminEventUsers,UserRegistrationEvent
 from django.conf import settings
 from rest_framework import routers
-from page.views import  RegisterAPI
+from page.views import  RegisterAPI, get_question, user_quiz_registration, quiz_answer_check
 from rest_framework.urlpatterns import format_suffix_patterns
 
 router = routers.DefaultRouter()
@@ -39,7 +39,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',about_us,name= "about"),
     path('events/',Events.as_view(),name= "events"),
-    path('events/<str:event_name>/',EventDiscription.as_view(),name= "discription"),
+    path('events/<str:event_id>/',EventDiscription.as_view(),name= "discription"),
     path('user-registration/' , UserRegistrationEvent.as_view()),
     path('', include('page.urls')),
     path('', include('social_django.urls', namespace='social')),
@@ -47,8 +47,12 @@ urlpatterns = [
     path('', include(router.urls)),
     path('isauthenticated/', UserISAuthenticated, name= "authenticated"),
     path('adminevents/', AdminEvents, name = "adminevents"),
-    path('adminevents/<str:id>', AdminEventUsers, name = "adminevents"),
-    path('register/',RegisterAPI.as_view())
+    path('adminevents/<str:id>', AdminEventUsers),
+    path('register/',RegisterAPI.as_view()),
+    path('question/',get_question),
+    path('quiz-reg/', user_quiz_registration),
+    path('answer-check/',quiz_answer_check),
+
     
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

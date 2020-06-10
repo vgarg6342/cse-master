@@ -34,14 +34,14 @@ class Events(APIView):
 
 class EventDiscription(APIView):
 
-    def get_object(self, event_name):
+    def get_object(self, event_id):
         try:
-            return Event.objects.get(event_name = event_name)
+            return Event.objects.get(event_id = event_id)
         except Events.DoesNotExist:
             raise Http404
 
-    def get(self, request,event_name, format=None):
-        event = self.get_object(event_name)
+    def get(self, request,event_id, format=None):
+        event = self.get_object(event_id)
         serializer = EventDataSerializer(event)
         return Response(serializer.data)
 

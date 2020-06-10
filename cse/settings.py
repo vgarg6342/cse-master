@@ -10,6 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.0/ref/settings/
 """
 
+
+'''
+written by -
+
+VIVEK GARG
+SC18B093
+vgarg6342@gmail.com
+'''
+
+
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -153,16 +163,7 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
-# SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '1017665257081-j5iblcunbio0bqnmnebfhgheuvqa9sfj.apps.googleusercontent.com'
-# SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = '5dI2DmKutsPgwXfIadyIl4Fd'
 
-# LOGIN_URL = '/auth/login/google-oauth2/'
-
-# LOGIN_REDIRECT_URL = 'http://google.com'
-# LOGOUT_REDIRECT_URL = 'http://google.com'
-
-
-# SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
 AUTH_USER_MODEL = 'Events.MyUser'
 
@@ -183,5 +184,8 @@ CORS_ALLOW_HEADERS = [
     'x-csrftoken',
     'x-requested-with',
     'event-name',
-    'battleofbands'
+    'battleofbands',
+    'quiz-name',
+    'question-no',
+    'unique-id'
 ]
