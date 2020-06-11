@@ -23,7 +23,7 @@ from django.urls import path, include
 from Events.views import about_us, EventDiscription, UserViewSet, Events, UserDetail, UserISAuthenticated, AdminEvents, AdminEventUsers,UserRegistrationEvent
 from django.conf import settings
 from rest_framework import routers
-from page.views import  RegisterAPI, get_question, user_quiz_registration, quiz_answer_check
+from page.views import  RegisterAPI, get_question, user_quiz_registration, quiz_answer_check,leaderboard
 from rest_framework.urlpatterns import format_suffix_patterns
 
 router = routers.DefaultRouter()
@@ -52,6 +52,7 @@ urlpatterns = [
     path('question/',get_question),
     path('quiz-reg/', user_quiz_registration),
     path('answer-check/',quiz_answer_check),
+    path('leaderboard/',leaderboard)
 
     
     

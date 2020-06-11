@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Events,MyUser
 from photologue.models import Gallery
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse,Http404
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.decorators import api_view, authentication_classes, permission_classes
@@ -29,6 +29,7 @@ class Events(APIView):
         serializer_context = {
             'request': request,
         }
+        # some time hyperlinked models requires the pass of request object as the context to work properly
         serializer = EventSerializer(queryset, context=serializer_context, many=True)
         return Response(serializer.data)
 
@@ -109,7 +110,10 @@ def AdminEvents(request):
 # for admin purposes
 def AdminEventUsers(request,id):
     if request.user.is_superuser:
-        qs = MyUser.objects.filter(id__icontains = "Y")
+        kwargs = {
+            '{0}__{1}'.format(id, 'icontains'): 'Y',
+        }
+        qs = MyUser.objects.filter(**kwargs)
         context ={
             'object_list': qs
         }
