@@ -27,7 +27,7 @@ class EventDataSerializer(serializers.HyperlinkedModelSerializer):
     # for specific events details
 	class Meta:
 		model  = Events
-		fields = ['event_speaker', 'gallery_url','event_name', 'discription', 'serial_no', 'event_rules', 'event_date']
+		fields = ['event_speaker', 'gallery_url','event_name', 'discription', 'serial_no', 'event_rules', 'event_date','event_id']
 
 class UserAddSerializer(serializers.HyperlinkedModelSerializer):
 	# additional detals for user input

@@ -49,13 +49,13 @@ class Events(models.Model):
 	def save(self, *args, **kwargs):
 		self.gallery_url = ""
 		for photo in self.event_gallery.photos.all():
-			full_url = ''.join(['http://', 'localhost:8000', photo.get_display_url()])
+			full_url = ''.join(['http://', 'api.conscientia.co.in', photo.get_display_url()])
 			self.gallery_url += full_url + " "
 
 		self.coordinator_url = ""
 		if self.event_coordinator is not None:
 			for photo in self.event_coordinator.photos.all():
-				full_urls = ''.join(['http://', 'localhost:8000', photo.get_display_url()])
+				full_urls = ''.join(['http://', 'api.conscientia.co.in', photo.get_display_url()])
 				self.coordinator_url += full_urls + " "
 		super(Events, self).save(*args, **kwargs)
 

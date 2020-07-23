@@ -33,6 +33,20 @@ class Events(APIView):
         serializer = EventSerializer(queryset, context=serializer_context, many=True)
         return Response(serializer.data)
 
+class EventsTypeFilter(APIView):
+    def get(self, request,event_type, format=None):
+        kwargs = {
+            '{0}__{1}'.format('event_type', 'icontains'): event_type,
+        }
+        queryset = Event.objects.filter(**kwargs)
+        serializer_context = {
+            'request': request,
+        }
+        # some time hyperlinked models requires the pass of request object as the context to work properly
+        serializer = EventSerializer(queryset, context=serializer_context, many=True)
+        return Response(serializer.data)
+
+
 class EventDiscription(APIView):
 
     def get_object(self, event_id):

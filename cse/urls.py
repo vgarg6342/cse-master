@@ -20,7 +20,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Events.views import about_us, EventDiscription, UserViewSet, Events, UserDetail, UserISAuthenticated, AdminEvents, AdminEventUsers,UserRegistrationEvent
+from Events.views import about_us, EventDiscription, UserViewSet, Events, UserDetail, UserISAuthenticated, AdminEvents, AdminEventUsers,UserRegistrationEvent,EventsTypeFilter
 from django.conf import settings
 from rest_framework import routers
 from page.views import  RegisterAPI, get_question, user_quiz_registration, quiz_answer_check,leaderboard
@@ -39,6 +39,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',about_us,name= "about"),
     path('events/',Events.as_view(),name= "events"),
+    path('event-types/<str:event_type>/',EventsTypeFilter.as_view(),name= "events"),
     path('events/<str:event_id>/',EventDiscription.as_view(),name= "discription"),
     path('user-registration/' , UserRegistrationEvent.as_view()),
     path('', include('page.urls')),
@@ -52,7 +53,7 @@ urlpatterns = [
     path('question/',get_question),
     path('quiz-reg/', user_quiz_registration),
     path('answer-check/',quiz_answer_check),
-    path('leaderboard/',leaderboard)
+    path('leaderboard/',leaderboard )
 
     
     
