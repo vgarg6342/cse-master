@@ -12,7 +12,7 @@ django-filter==2.2.0
 django-oauth-toolkit==1.2.0
 django-photologue==3.10
 django-sortedm2m==2.0.0
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 ExifRead==2.1.2
 hyperlink==19.0.0
 idna==2.8
